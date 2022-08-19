@@ -4,7 +4,7 @@ from urllib.parse import urljoin
 from marketplace.app import MarketPlaceApp
 
 
-class HPCApp(MarketPlaceApp):
+class HpcGatewayApp(MarketPlaceApp):
     def status(self):
         return super().heartbeat()
 
