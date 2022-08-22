@@ -4,7 +4,7 @@ from urllib.parse import urljoin
 from marketplace.app import MarketPlaceApp
 
 
-class HPCApp(MarketPlaceApp):
+class HpcGatewayApp(MarketPlaceApp):
     def status(self):
         return super().heartbeat()
 
@@ -21,7 +21,7 @@ class HPCApp(MarketPlaceApp):
             raise RuntimeError(message)
         return response
 
-    def upload(self, resourceid, source_path=str):
+    def upload_file(self, resourceid, source_path=str):
         """upload file to remote path `resourceid` from source path"""
         with open(source_path, "rb") as fh:
             print(resourceid)
@@ -32,7 +32,7 @@ class HPCApp(MarketPlaceApp):
                 files={"file": fh},
             )
 
-    def download(self, resourceid, filename) -> str:
+    def download_file(self, resourceid, filename) -> str:
         """download file from `resourceid`
         return str of content"""
         resp = super().get(
@@ -43,13 +43,12 @@ class HPCApp(MarketPlaceApp):
 
         return resp.text
 
-    def delete(self, resourceid, filename):
-        resp = super().delete(
+    def delete_file(self, resourceid, filename):
+        super().delete(
             path="delateDataset",
             params={"resourceid": f"{resourceid}"},
             json={"filename": filename},
         )
-        return resp.text
 
     def new_job(self, config=None):
         """Create a new job
