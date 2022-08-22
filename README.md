@@ -23,14 +23,14 @@ The following capabilities are supported and can be called by using the SDK.
 
 - Check the availability of system: `hpc.heartbeat()`
 - Create a new calculation: `hpc.new_job()`, the resourceid will returned to list files on remote workdir, upload/downlead/delete files and the launch/delete job.
-- Upload file: `hpc.upload(resourceid=<resourceid>, source_path=<file_local_path>`.
-- Download file: `hpc.download(resourceid=<resourceid>, filename=<filename>`.
+- Upload file: `hpc.upload_file(resourceid=<resourceid>, source_path=<file_local_path>`.
+- Download file: `hpc.download_file(resourceid=<resourceid>, filename=<filename>`.
 - Delete file: `hpc.delete_file(resourceid=resourceid, filename=<filename>)`
 - List jobs (only CSCS deployment): `hpc.list_jobs()`.
 - Launch job: `hpc.run_job(resourceid=<resourceid>)`
 - Delete job: `hpc.delete_job(resourceid=resourceid)`
 
-You can find a example from https://github.com/materials-marketplace/python-sdk/blob/main/examples/hpc_api.ipynb
+You can find example at https://github.com/materials-marketplace/hpc-sdk/blob/main/hpc_api.ipynb
 
 ### Materials Cloud (CSCS) deployment
 
