@@ -1,7 +1,9 @@
 import ast
+from typing import Union
 from urllib.parse import urljoin
 
 from marketplace.app import MarketPlaceApp
+from urllib3.response import HTTPResponse
 
 
 class HpcGatewayApp(MarketPlaceApp):
@@ -32,16 +34,22 @@ class HpcGatewayApp(MarketPlaceApp):
                 files={"file": fh},
             )
 
-    def download_file(self, resourceid, filename) -> str:
+    def download_file(
+        self, resourceid, filename, is_binary=False
+    ) -> Union[str, HTTPResponse]:
         """download file from `resourceid`
         return str of content"""
         resp = super().get(
             path="getDataset",
             params={"resourceid": f"{resourceid}"},
             json={"filename": filename},
+            stream=True,
         )
 
-        return resp.text
+        if is_binary:
+            return resp.raw
+        else:
+            return resp.txt
 
     def delete_file(self, resourceid, filename):
         super().delete(
