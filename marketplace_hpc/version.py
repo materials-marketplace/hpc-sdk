@@ -11,4 +11,4 @@ try:
 except RuntimeError:
     __version__ = get_version("hpc-sdk").serialize()
 except ImportError:
-    __version__ = "v0.2.0"
+    __version__ = "v0.2.1"
