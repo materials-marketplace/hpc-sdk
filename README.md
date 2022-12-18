@@ -1,6 +1,11 @@
 # hpc-sdk
 sdk for hpc app of EU Materials-MarketPlace
 
+## Archived
+
+This repository is archived since the hpc-gateway-app SDK is now all implemented and can be installed from hpc-gateway-app repository (https://github.com/materials-marketplace/hpc-gateway-app).
+To install the hpc SDK from PyPI, the `marketplace-hpc` (https://pypi.org/project/marketplace-hpc/) is provided.
+
 ## Interacte with HPC through MarketPlace proxy
 
 ### Use/integrate HPC Gateway app by SDK
